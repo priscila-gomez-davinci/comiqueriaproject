@@ -10,7 +10,7 @@ import './App.css';
 function App() {
   return (
     <Router>
-        <div className="App" style={{ paddingBottom: '60px' }}> {/* Ajusta padding-bottom según la altura del footer */}                <Header />
+        <div className="App" style={{ paddingBottom: '60px' }}> <Header />
         <Routes> 
           <Route path="/" element={<HomePage />} /> 
           <Route path="/productos" element={<ProductList />} />
