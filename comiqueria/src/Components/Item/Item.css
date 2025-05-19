@@ -1,0 +1,14 @@
+.item-container {
+    display: flex;
+    align-items: center;
+}
+
+.item-image {
+    width: 30%;
+    height: auto;
+    margin-right: 16px;
+}
+
+.item-content {
+    flex: 1;
+}
