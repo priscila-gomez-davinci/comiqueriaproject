@@ -1,25 +1,30 @@
-import React from 'react';
-import './Carousel.css'; 
+import React, { useEffect } from 'react';
+import { Carousel as AntCarousel } from 'antd';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectItems } from '../ItemSlice/ItemSlice';
+import Item from '../Item/Item';
+import './Carousel.css';
 
 function Carousel() {
-  const items = [
-    { id: 1, imageUrl: 'https://via.placeholder.com/400x300/FF0000', altText: 'Ítem 1', description: 'Descripción del ítem 1' },
-    { id: 2, imageUrl: 'https://via.placeholder.com/400x300/00FF00', altText: 'Ítem 2', description: 'Descripción del ítem 2' },
-    { id: 3, imageUrl: 'https://via.placeholder.com/400x300/0000FF', altText: 'Ítem 3', description: 'Descripción del ítem 3' },
-  ];
+    const items = useSelector(selectItems); 
+    const dispatch = useDispatch();
 
-  return (
-    <div className="carousel-container">
-      <div className="carousel">
-        {items.map(item => (
-          <div key={item.id} className="carousel-item">
-            <img src={item.imageUrl} alt={item.altText} />
-            <p className="description">{item.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
+    return (
+        <div className="carousel-container">
+            <AntCarousel autoplay autoplaySpeed={3000} >
+                {items.map(item => (
+                    <div key={item.id} className="carousel-item">
+                        <Item 
+                            titulo={item.titulo} 
+                            descripcion={item.descripcion} 
+                            precio={item.precio} 
+                            imagen={item.imagen} 
+                        />
+                    </div>
+                ))}
+            </AntCarousel>
+        </div>
+    );
 }
 
 export default Carousel;
